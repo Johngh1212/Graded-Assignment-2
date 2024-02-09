@@ -92,9 +92,17 @@ function scorerPrompt() {
   console.log("0 - Simple: One point per character");
   console.log("1 - Vowel Bonus: Vowels are worth 3 points");
   console.log("2 - Scrabble: Uses scrabble point system");
-  
-  //Ask user to select scoring option
-  let selection = input.question("Enter 0, 1, or 2: ");
+
+  let selection;
+  while (true) {
+    selection = input.question("Enter 0, 1, or 2: ");
+    if (selection === "0" || selection === "1" || selection === "2") {
+      break; // if user enter number more than 3, it will ask user again
+    } else {
+      console.log("Please choose the options given. Please enter 0, 1, or 2.");
+    }
+  }
+
   return scoringAlgorithms[selection];
 }
 
